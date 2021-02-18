@@ -1,10 +1,12 @@
+{{# if hasAssociations }}
 {{#each fields}}
 {{#if this.target}}
-import { {{this.target}}Interface } from './{{this.target}}Interface';
+import {{this.target}}Interface from './{{this.target}}Interface';
 {{/if}}
 {{/each}}
 
-export interface {{name}}Interface {
+{{/if}}
+export default interface {{name}}Interface {
 {{#each fields}}
     {{@key}}: {{this.typescript}};
 {{/each}}

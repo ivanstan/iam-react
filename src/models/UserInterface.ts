@@ -1,7 +1,7 @@
-import { ApplicationInterface } from './ApplicationInterface';
-import { ClaimInterface } from './ClaimInterface';
+import ApplicationInterface from './ApplicationInterface';
+import ClaimInterface from './ClaimInterface';
 
-export interface UserInterface {
+export default interface UserInterface {
     applications: ApplicationInterface[];
     claims: ClaimInterface[];
     id: number;

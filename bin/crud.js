@@ -42,6 +42,8 @@ function ensureDirectoryExistence(filePath) {
 }
 
 function generate(metadata) {
+  let finished  = 0;
+
   for (let i in config.files) {
     fs.readFile(config.files[i]['source'], 'utf8', (err, data) => {
       if (err) {
@@ -55,6 +57,12 @@ function generate(metadata) {
       ensureDirectoryExistence(target);
       fs.writeFile(target, template(config.arguments(metadata)), () => {
         console.log('New file created: ' + target);
+
+        finished++;
+
+        if (config.files.length === finished) {
+          process.exit(0);
+        }
       });
     });
   }
