@@ -1,0 +1,11 @@
+{{#each fields}}
+{{#if this.target}}
+import { {{this.target}}Interface } from './{{this.target}}Interface';
+{{/if}}
+{{/each}}
+
+export interface {{name}}Interface {
+{{#each fields}}
+    {{@key}}: {{this.typescript}};
+{{/each}}
+}
