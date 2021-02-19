@@ -1,4 +1,11 @@
-export class {{name}}DataSource {
+import { AbstractDataSource } from "../AbstractDataSource";
+
+export class {{name}}DataSource extends AbstractDataSource {
+
+    public get(id: number) {
+
+    }
 
 }
 
+export const {{property}}DataSource = new {{name}}DataSource();

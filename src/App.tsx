@@ -7,9 +7,7 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route path="/user/:id">
-          <UserDetailsPage/>
-        </Route>
+        <Route path="/user/:id" component={UserDetailsPage}/>
       </Switch>
     </Router>
   );
