@@ -19,6 +19,7 @@ module.exports = {
   ],
   arguments(metadata) {
     metadata.hasAssociations = false;
+    metadata.route = helper.camelToSnakeCase(metadata.name);
 
     for (let i in metadata.fields) {
       metadata.fields[i]['typescript'] = helper.getTypescriptType(metadata.fields[i]);
