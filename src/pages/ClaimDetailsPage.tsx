@@ -11,6 +11,6 @@ interface ClaimDetailsPageStateInterface {
 
 class ClaimDetailsPage extends React.Component<ClaimDetailsPagePropsInterface, ClaimDetailsPageStateInterface> {
     render() {
-
+      return '';
     }
 }

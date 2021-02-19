@@ -9,8 +9,8 @@ interface UserDetailsPageStateInterface {
 
 }
 
-class UserDetailsPage extends React.Component<UserDetailsPagePropsInterface, UserDetailsPageStateInterface> {
+export class UserDetailsPage extends React.Component<UserDetailsPagePropsInterface, UserDetailsPageStateInterface> {
     render() {
-
+        return '';
     }
 }

@@ -43,6 +43,7 @@ function ensureDirectoryExistence(filePath) {
 
 function generate(metadata) {
   let finished  = 0;
+  console.log('');
 
   for (let i in config.files) {
     fs.readFile(config.files[i]['source'], 'utf8', (err, data) => {
@@ -61,7 +62,11 @@ function generate(metadata) {
         finished++;
 
         if (config.files.length === finished) {
-          process.exit(0);
+          config.print(metadata, (message) => {
+            console.log('');
+            console.info(message);
+            process.exit(0);
+          });
         }
       });
     });
