@@ -1,7 +1,8 @@
 import React from 'react'
-import UserInterface from '../models/UserInterface'
+import { UserInterface } from '../models/UserInterface'
 import { RouteChildrenProps } from 'react-router-dom'
 import { userDataSource } from "../services/data_sources/UserDataSource"
+import { UserEntityView } from "../components/UserEntityView";
 
 export interface UserDetailsPageRouteParams {
   id: string
@@ -21,17 +22,17 @@ export class UserDetailsPage extends React.Component<UserDetailsPagePropsInterfa
       entity: null,
     }
 
-    constructor(props: UserDetailsPagePropsInterface) {
-        super(props)
+    componentDidMount() {
+      const id = this.props.match?.params.id || null
 
-        const id = props.match?.params.id || null
-
-        if (id) {
-            userDataSource.get(id).then(entity => this.setState({entity: entity}))
-        }
+      if (id) {
+        userDataSource.get(id).then(entity => this.setState({entity: entity}))
+      }
     }
 
     render() {
-        return ''
+        const { entity } = this.state;
+
+        return <UserEntityView entity={entity} />
     }
 }

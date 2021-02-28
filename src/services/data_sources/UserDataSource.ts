@@ -1,5 +1,5 @@
 import { AbstractDataSource } from "../AbstractDataSource"
-import UserInterface from '../../models/UserInterface'
+import { UserInterface } from '../../models/UserInterface'
 
 const url = 'https://iam.ivanstanojevic.me'
 

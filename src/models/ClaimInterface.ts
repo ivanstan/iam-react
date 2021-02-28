@@ -1,4 +1,4 @@
-export default interface ClaimInterface {
-    id: number;
-    name: string;
+export interface ClaimInterface {
+    id: number
+    name: string
 }
