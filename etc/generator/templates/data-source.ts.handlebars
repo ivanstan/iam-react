@@ -1,11 +1,16 @@
-import { AbstractDataSource } from "../AbstractDataSource";
+import { AbstractDataSource } from "../AbstractDataSource"
+import {{name}}Interface from '../../models/{{name}}Interface'
+
+const url = '{{baseUrl}}'
 
 export class {{name}}DataSource extends AbstractDataSource {
 
-    public get(id: number) {
+  public async get(id: string|number): Promise<{{name}}Interface|null> {
+    const response = await fetch(this.baseUrl + '/api/entity/user/' + id)
 
-    }
+    return await response.json()
+  }
 
 }
 
-export const {{property}}DataSource = new {{name}}DataSource();
+export const {{property}}DataSource = new {{name}}DataSource(url)

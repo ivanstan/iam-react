@@ -11,10 +11,10 @@ const rl = readline.createInterface({
 });
 
 if (process.argv[2]) {
-  getEntity(process.argv[2]).then((data) => generate(data));
+  getEntity(process.argv[2]).then((data) => generate(data, process.argv[2]));
 } else {
   rl.question("Enter entity detail url: ", function (url) {
-    getEntity(url).then((data) => generate(data));
+    getEntity(url).then((data) => generate(data, url));
   });
 }
 
@@ -41,7 +41,10 @@ function ensureDirectoryExistence(filePath) {
   fs.mkdirSync(dirname);
 }
 
-function generate(metadata) {
+function generate(metadata, url) {
+  var parsed = new URL(url);
+  metadata.baseUrl = parsed.origin;
+
   let finished  = 0;
   console.log('');
 

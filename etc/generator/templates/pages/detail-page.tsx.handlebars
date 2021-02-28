@@ -1,35 +1,37 @@
-import React from 'react';
-import {{name}}Interface from '../models/{{name}}Interface';
-import { RouteChildrenProps } from 'react-router-dom';
-import { {{property}}DataSource } from "../services/data_sources/{{name}}DataSource";
+import React from 'react'
+import {{name}}Interface from '../models/{{name}}Interface'
+import { RouteChildrenProps } from 'react-router-dom'
+import { {{property}}DataSource } from "../services/data_sources/{{name}}DataSource"
 
-interface {{name}}DetailsPageRouteParams {
-id: string;
+export interface {{name}}DetailsPageRouteParams {
+  id: string
 }
 
-interface {{name}}DetailsPagePropsInterface extends RouteChildrenProps<{{name}}DetailsPageRouteParams> {
+export interface {{name}}DetailsPagePropsInterface extends RouteChildrenProps<{{name}}DetailsPageRouteParams> {
 
 }
 
-interface {{name}}DetailsPageStateInterface {
-
+export interface {{name}}DetailsPageStateInterface {
+  entity: {{name}}Interface|null
 }
 
 export class {{name}}DetailsPage extends React.Component<{{name}}DetailsPagePropsInterface, {{name}}DetailsPageStateInterface> {
 
-    public readonly state: {{name}}DetailsPageStateInterface = {};
+    public readonly state: {{name}}DetailsPageStateInterface = {
+      entity: null,
+    }
 
     constructor(props: {{name}}DetailsPagePropsInterface) {
-        super(props);
+        super(props)
 
-        const id = props.match?.params.id || null;
+        const id = props.match?.params.id || null
 
         if (id) {
-            {{property}}DataSource.get(id).then();
+            {{property}}DataSource.get(id).then(entity => this.setState({entity: entity}))
         }
     }
 
     render() {
-        return '';
+        return ''
     }
 }

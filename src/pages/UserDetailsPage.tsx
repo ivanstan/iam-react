@@ -1,34 +1,37 @@
-import React from 'react';
-import { RouteChildrenProps } from 'react-router-dom';
-import { userDataSource } from "../services/data_sources/UserDataSource";
+import React from 'react'
+import UserInterface from '../models/UserInterface'
+import { RouteChildrenProps } from 'react-router-dom'
+import { userDataSource } from "../services/data_sources/UserDataSource"
 
-interface UserDetailsPageRouteParams {
-  id: string;
+export interface UserDetailsPageRouteParams {
+  id: string
 }
 
-interface UserDetailsPagePropsInterface extends RouteChildrenProps<UserDetailsPageRouteParams> {
+export interface UserDetailsPagePropsInterface extends RouteChildrenProps<UserDetailsPageRouteParams> {
 
 }
 
-interface UserDetailsPageStateInterface {
-
+export interface UserDetailsPageStateInterface {
+  entity: UserInterface|null
 }
 
 export class UserDetailsPage extends React.Component<UserDetailsPagePropsInterface, UserDetailsPageStateInterface> {
 
-  public readonly state: UserDetailsPageStateInterface = {};
-
-  constructor(props: UserDetailsPagePropsInterface) {
-    super(props);
-
-    const id = props.match?.params.id || null;
-
-    if (id) {
-      userDataSource.get(id).then();
+    public readonly state: UserDetailsPageStateInterface = {
+      entity: null,
     }
-  }
 
-  render() {
-    return '';
-  }
+    constructor(props: UserDetailsPagePropsInterface) {
+        super(props)
+
+        const id = props.match?.params.id || null
+
+        if (id) {
+            userDataSource.get(id).then(entity => this.setState({entity: entity}))
+        }
+    }
+
+    render() {
+        return ''
+    }
 }
