@@ -1,14 +1,15 @@
 import React from 'react'
+import { translate, TranslateProps } from "react-polyglot"
 import { {{name}}Interface } from '../models/{{name}}Interface'
 import { RouteChildrenProps } from 'react-router-dom'
-import { {{property}}DataSource } from "../services/data_sources/{{name}}DataSource"
-import { {{name}}EntityView } from "../components/{{name}}EntityView";
+import { {{property}}DataSource } from "../services/data/{{name}}DataSource"
+import { {{name}}EntityView } from "../components/view/{{name}}EntityView"
 
 export interface {{name}}DetailsPageRouteParams {
   id: string
 }
 
-export interface {{name}}DetailsPagePropsInterface extends RouteChildrenProps<{{name}}DetailsPageRouteParams> {
+export interface {{name}}DetailsPagePropsInterface extends TranslateProps, RouteChildrenProps<{{name}}DetailsPageRouteParams> {
 
 }
 
@@ -31,8 +32,20 @@ export class {{name}}DetailsPage extends React.Component<{{name}}DetailsPageProp
     }
 
     render() {
-        const { entity } = this.state;
+        const { entity } = this.state
+        const { t } = this.props
 
-        return <{{name}}EntityView entity={entity} />
+        return (
+          <div className="container">
+            <div className="row">
+              <div className="col-12">
+                <h1>{t('{{ capitalize name }}')}</h1>
+                <{{name}}EntityView entity={entity} />
+              </div>
+            </div>
+          </div>
+        )
     }
 }
+
+export default translate()({{name}}DetailsPage)

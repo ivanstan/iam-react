@@ -1,9 +1,9 @@
 import React from 'react'
-import { {{name}}Interface } from '../models/{{name}}Interface'
+import { {{name}}Interface } from '../../models/{{name}}Interface'
 {{#if hasAssociations }}
 {{#each fields}}
 {{#if this.target}}
-import { {{this.target}}Interface } from '../models/{{this.target}}Interface'
+import { {{this.target}}Interface } from '../../models/{{this.target}}Interface'
 import { {{capitalize (camelcase this.target)}}EntityView } from './{{this.target}}EntityView'
 {{/if}}
 {{/each}}
@@ -20,27 +20,27 @@ export interface {{name}}EntityViewStateInterface {
 export class {{name}}EntityView extends React.Component<{{name}}EntityViewPropsInterface, {{name}}EntityViewStateInterface> {
 
   render() {
-    const { entity } = this.props;
+    const { entity } = this.props
 
     if (entity === null) {
-      return null;
+      return null
     }
 
     return (
-      <>
-        {{#each fields}}
-          <tr>
-            <td>{{capitalize @key}}</td>
-            <td>
-              {{#if (eq this.type "array")}}
-              {entity.{{@key}}?.map((entity: {{this.target}}Interface, index: number) => <{{this.target}}EntityView key={index} entity={entity}/>)}
-              {{else}}
-              { entity.{{@key}} }
-              {{/if}}
-            </td>
-          </tr>
-        {{/each}}
-      </>
+      <table className="table">
+      {{#each fields}}
+        <tr>
+          <td>{{capitalize @key}}</td>
+          <td>
+            {{#if (eq this.type "array")}}
+            {entity.{{@key}}?.map((entity: {{this.target}}Interface, index: number) => <{{this.target}}EntityView key={index} entity={entity}/>)}
+            {{else}}
+            { entity.{{@key}} }
+            {{/if}}
+          </td>
+        </tr>
+      {{/each}}
+      </table>
     )
   }
 

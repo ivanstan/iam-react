@@ -1,14 +1,15 @@
 import React from 'react'
+import { translate, TranslateProps } from "react-polyglot"
 import { ClaimInterface } from '../models/ClaimInterface'
 import { RouteChildrenProps } from 'react-router-dom'
-import { claimDataSource } from "../services/data_sources/ClaimDataSource"
-import { ClaimEntityView } from "../components/ClaimEntityView";
+import { claimDataSource } from "../services/data/ClaimDataSource"
+import { ClaimEntityView } from "../components/view/ClaimEntityView"
 
 export interface ClaimDetailsPageRouteParams {
   id: string
 }
 
-export interface ClaimDetailsPagePropsInterface extends RouteChildrenProps<ClaimDetailsPageRouteParams> {
+export interface ClaimDetailsPagePropsInterface extends TranslateProps, RouteChildrenProps<ClaimDetailsPageRouteParams> {
 
 }
 
@@ -31,8 +32,20 @@ export class ClaimDetailsPage extends React.Component<ClaimDetailsPagePropsInter
     }
 
     render() {
-        const { entity } = this.state;
+        const { entity } = this.state
+        const { t } = this.props
 
-        return <ClaimEntityView entity={entity} />
+        return (
+          <div className="container">
+            <div className="row">
+              <div className="col-12">
+                <h1>{t('Claim')}</h1>
+                <ClaimEntityView entity={entity} />
+              </div>
+            </div>
+          </div>
+        )
     }
 }
+
+export default translate()(ClaimDetailsPage)

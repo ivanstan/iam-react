@@ -1,14 +1,15 @@
 import React from 'react'
+import { translate, TranslateProps } from "react-polyglot"
 import { ApplicationInterface } from '../models/ApplicationInterface'
 import { RouteChildrenProps } from 'react-router-dom'
-import { applicationDataSource } from "../services/data_sources/ApplicationDataSource"
-import { ApplicationEntityView } from "../components/ApplicationEntityView";
+import { applicationDataSource } from "../services/data/ApplicationDataSource"
+import { ApplicationEntityView } from "../components/view/ApplicationEntityView"
 
 export interface ApplicationDetailsPageRouteParams {
   id: string
 }
 
-export interface ApplicationDetailsPagePropsInterface extends RouteChildrenProps<ApplicationDetailsPageRouteParams> {
+export interface ApplicationDetailsPagePropsInterface extends TranslateProps, RouteChildrenProps<ApplicationDetailsPageRouteParams> {
 
 }
 
@@ -31,8 +32,20 @@ export class ApplicationDetailsPage extends React.Component<ApplicationDetailsPa
     }
 
     render() {
-        const { entity } = this.state;
+        const { entity } = this.state
+        const { t } = this.props
 
-        return <ApplicationEntityView entity={entity} />
+        return (
+          <div className="container">
+            <div className="row">
+              <div className="col-12">
+                <h1>{t('Application')}</h1>
+                <ApplicationEntityView entity={entity} />
+              </div>
+            </div>
+          </div>
+        )
     }
 }
+
+export default translate()(ApplicationDetailsPage)

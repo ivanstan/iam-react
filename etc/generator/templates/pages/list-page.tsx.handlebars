@@ -1,0 +1,29 @@
+import React from 'react'
+import { translate, TranslateProps } from "react-polyglot"
+import { RouteChildrenProps } from 'react-router-dom'
+
+export interface {{name}}ListPagePropsInterface extends RouteChildrenProps, TranslateProps {
+  
+}
+
+export interface {{name}}ListPageStateInterface {
+
+}
+
+export class {{name}}ListPage extends React.Component<{{name}}ListPagePropsInterface, {{name}}ListPageStateInterface> {
+  render() {
+    const { t } = this.props
+
+    return (
+      <div className="container">
+        <div className="row">
+          <div className="col-12">
+            <h1>{t('{{ capitalize name }}s')}</h1>
+          </div>
+        </div>
+      </div>
+    )
+  }
+}
+
+export default translate()({{name}}ListPage)

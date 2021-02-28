@@ -1,14 +1,15 @@
 import React from 'react'
+import { translate, TranslateProps } from "react-polyglot"
 import { UserInterface } from '../models/UserInterface'
 import { RouteChildrenProps } from 'react-router-dom'
-import { userDataSource } from "../services/data_sources/UserDataSource"
-import { UserEntityView } from "../components/UserEntityView";
+import { userDataSource } from "../services/data/UserDataSource"
+import { UserEntityView } from "../components/view/UserEntityView"
 
 export interface UserDetailsPageRouteParams {
   id: string
 }
 
-export interface UserDetailsPagePropsInterface extends RouteChildrenProps<UserDetailsPageRouteParams> {
+export interface UserDetailsPagePropsInterface extends TranslateProps, RouteChildrenProps<UserDetailsPageRouteParams> {
 
 }
 
@@ -31,8 +32,20 @@ export class UserDetailsPage extends React.Component<UserDetailsPagePropsInterfa
     }
 
     render() {
-        const { entity } = this.state;
+        const { entity } = this.state
+        const { t } = this.props
 
-        return <UserEntityView entity={entity} />
+        return (
+          <div className="container">
+            <div className="row">
+              <div className="col-12">
+                <h1>{t('User')}</h1>
+                <UserEntityView entity={entity} />
+              </div>
+            </div>
+          </div>
+        )
     }
 }
+
+export default translate()(UserDetailsPage)

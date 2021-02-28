@@ -1,30 +1,30 @@
 module.exports = {
   getTypescriptType(field) {
-    let data = '';
+    let data = ''
 
     switch (field.type) {
       case 'json':
-        data = 'any';
-        break;
+        data = 'any'
+        break
       case 'float':
       case 'integer':
-        data = 'number';
-        break;
+        data = 'number'
+        break
       case 'guid':
       case 'datetime':
-        data = 'string';
-        break;
+        data = 'string'
+        break
       default:
-        data = field.type;
+        data = field.type
     }
 
     if (field.type === 'array') {
-      data = field.target + 'Interface[]';
+      data = field.target + 'Interface[]'
     }
 
-    return data;
+    return data
   },
   camelToSnakeCase (str) {
     return str.replace(/[A-Z]/g, letter => `_${letter.toLowerCase()}`).replace(/^_/, '')
   }
-};
+}

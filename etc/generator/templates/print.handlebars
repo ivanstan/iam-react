@@ -1,5 +1,6 @@
 Add this to App.tsx in Router section:
 
-<Route path="/{{route}}/:id">
-    <{{name}}DetailsPage/>
-</Route>
+<Route path="/{{route}}/:id" component={ {{name}}DetailsPage }/>
+<Route path="/{{route}}/:id/edit" component={ {{name}}EditPage }/>
+<Route path="/{{route}}s" component={ {{name}}ListPage }/>
+<Route path="/{{route}}/new" component={ {{name}}CreatePage }/>

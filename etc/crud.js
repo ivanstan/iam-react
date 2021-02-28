@@ -14,15 +14,31 @@ module.exports = {
     },
     {
       source: 'etc/generator/templates/services/data/data-source.ts.handlebars',
-      target: 'src/services/data_sources/{{name}}DataSource.ts',
+      target: 'src/services/data/{{name}}DataSource.ts',
     },
     {
       source: 'etc/generator/templates/pages/detail-page.tsx.handlebars',
       target: 'src/pages/{{name}}DetailsPage.tsx',
     },
     {
+      source: 'etc/generator/templates/pages/edit-page.tsx.handlebars',
+      target: 'src/pages/{{name}}EditPage.tsx',
+    },
+    {
+      source: 'etc/generator/templates/pages/list-page.tsx.handlebars',
+      target: 'src/pages/{{name}}ListPage.tsx',
+    },
+    {
+      source: 'etc/generator/templates/pages/create-page.tsx.handlebars',
+      target: 'src/pages/{{name}}CreatePage.tsx',
+    },
+    {
       source: 'etc/generator/templates/components/entity-view.tsx.handlebars',
-      target: 'src/components/{{name}}EntityView.tsx',
+      target: 'src/components/view/{{name}}EntityView.tsx',
+    },
+    {
+      source: 'etc/generator/templates/forms/edit-form.tsx.handlebars',
+      target: 'src/components/forms/{{name}}EntityEditForm.tsx',
     },
   ],
   arguments(metadata) {
