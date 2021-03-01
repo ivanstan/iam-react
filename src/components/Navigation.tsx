@@ -4,8 +4,11 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import React from "react";
-import { SwipeableDrawer } from "@material-ui/core";
+import { SwipeableDrawer, withStyles } from "@material-ui/core";
 import SideMenu from "./SideMenu";
+import { translate } from "react-polyglot";
+
+const useStyles: any = (theme: any) => ({});
 
 class Navigation extends React.Component<any, any> {
 
@@ -23,6 +26,7 @@ class Navigation extends React.Component<any, any> {
 
   render() {
     const { sideMenuOpen } = this.state;
+    const { t } = this.props;
 
     return (
       <>
@@ -32,7 +36,7 @@ class Navigation extends React.Component<any, any> {
               <MenuIcon/>
             </IconButton>
             <Typography variant="h6">
-              IAM
+              {t('IAM')}
             </Typography>
           </Toolbar>
         </AppBar>
@@ -56,4 +60,4 @@ class Navigation extends React.Component<any, any> {
   }
 }
 
-export default Navigation
+export default translate()(withStyles(useStyles)(SideMenu));

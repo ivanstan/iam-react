@@ -18,7 +18,7 @@ import Navigation from "./components/Navigation";
 
 function App() {
   return (
-    <I18n locale={'en'} messages={{}}>
+    <I18n locale={'en'} messages={{}} allowMissing>
       <>
         <Navigation/>
         <Router>
