@@ -1,15 +1,16 @@
 import React from 'react'
+import { translate, TranslateProps } from "react-polyglot"
 import { {{name}}Interface } from '../../models/{{name}}Interface'
 {{#if hasAssociations }}
 {{#each fields}}
 {{#if this.target}}
 import { {{this.target}}Interface } from '../../models/{{this.target}}Interface'
-import { {{capitalize (camelcase this.target)}}EntityView } from './{{this.target}}EntityView'
+import {{capitalize (camelcase this.target)}}EntityView from './{{this.target}}EntityView'
 {{/if}}
 {{/each}}
 {{/if}}
 
-export interface {{name}}EntityViewPropsInterface {
+export interface {{name}}EntityViewPropsInterface extends TranslateProps {
   entity: {{name}}Interface|null
 }
 
@@ -20,7 +21,7 @@ export interface {{name}}EntityViewStateInterface {
 export class {{name}}EntityView extends React.Component<{{name}}EntityViewPropsInterface, {{name}}EntityViewStateInterface> {
 
   render() {
-    const { entity } = this.props
+    const { entity, t } = this.props
 
     if (entity === null) {
       return null
@@ -30,7 +31,7 @@ export class {{name}}EntityView extends React.Component<{{name}}EntityViewPropsI
       <table className="table">
       {{#each fields}}
         <tr>
-          <td>{{capitalize @key}}</td>
+          <td>{t('{{capitalize @key}}')}</td>
           <td>
             {{#if (eq this.type "array")}}
             {entity.{{@key}}?.map((entity: {{this.target}}Interface, index: number) => <{{this.target}}EntityView key={index} entity={entity}/>)}
@@ -45,3 +46,5 @@ export class {{name}}EntityView extends React.Component<{{name}}EntityViewPropsI
   }
 
 }
+
+export default translate()({{name}}EntityView)

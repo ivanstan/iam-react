@@ -1,5 +1,6 @@
 import React from 'react'
 import { {{name}}Interface } from '../../models/{{name}}Interface'
+import { translate, TranslateProps } from "react-polyglot"
 
 export interface {{name}}EntityEditFormPropsInterface {
   entity: {{name}}Interface|null
@@ -14,3 +15,5 @@ export class {{name}}EntityEditForm extends React.Component<{{name}}EntityEditFo
     return ''
   }
 }
+
+export default translate()({{name}}EntityEditForm)
