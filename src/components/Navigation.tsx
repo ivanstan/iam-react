@@ -60,4 +60,4 @@ class Navigation extends React.Component<any, any> {
   }
 }
 
-export default translate()(withStyles(useStyles)(SideMenu));
+export default translate()(withStyles(useStyles)(Navigation));
