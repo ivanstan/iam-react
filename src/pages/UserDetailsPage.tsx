@@ -3,7 +3,7 @@ import { translate, TranslateProps } from "react-polyglot"
 import { UserInterface } from '../models/UserInterface'
 import { RouteChildrenProps } from 'react-router-dom'
 import { userDataSource } from "../services/data/UserDataSource"
-import { UserEntityView } from "../components/view/UserEntityView"
+import UserEntityView from "../components/view/UserEntityView"
 
 export interface UserDetailsPageRouteParams {
   id: string

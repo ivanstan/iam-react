@@ -3,7 +3,7 @@ import { translate, TranslateProps } from "react-polyglot"
 import { ClaimInterface } from '../models/ClaimInterface'
 import { RouteChildrenProps } from 'react-router-dom'
 import { claimDataSource } from "../services/data/ClaimDataSource"
-import { ClaimEntityView } from "../components/view/ClaimEntityView"
+import ClaimEntityView from "../components/view/ClaimEntityView"
 
 export interface ClaimDetailsPageRouteParams {
   id: string

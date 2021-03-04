@@ -3,7 +3,7 @@ import { translate, TranslateProps } from "react-polyglot"
 import { ApplicationInterface } from '../models/ApplicationInterface'
 import { RouteChildrenProps } from 'react-router-dom'
 import { applicationDataSource } from "../services/data/ApplicationDataSource"
-import { ApplicationEntityView } from "../components/view/ApplicationEntityView"
+import ApplicationEntityView from "../components/view/ApplicationEntityView"
 
 export interface ApplicationDetailsPageRouteParams {
   id: string

@@ -17,6 +17,21 @@ export interface {{name}}DetailsPageStateInterface {
   entity: {{name}}Interface|null
 }
 
+const breadcrumbs = [
+  {
+    title: "Home",
+    url: "#/",
+  },
+  {
+    title: "{{capitalize name}}s",
+    url: "#/{{route}}",
+  },
+  {
+    title: "{{capitalize name}} details",
+    url: "#/{{route}}",
+  }
+];
+
 export class {{name}}DetailsPage extends React.Component<{{name}}DetailsPagePropsInterface, {{name}}DetailsPageStateInterface> {
 
     public readonly state: {{name}}DetailsPageStateInterface = {
