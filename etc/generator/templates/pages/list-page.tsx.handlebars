@@ -5,6 +5,17 @@ import { makeStyles } from '@material-ui/core/styles'
 import AddCircleIcon from '@material-ui/icons/AddCircle'
 import { Divider, Button, withStyles, StyledComponentProps } from '@material-ui/core/'
 import Breadcrumbs from "../components/Breadcrumbs";
+import { {{name}}Interface } from '../models/{{name}}Interface'
+import { DataGrid, GridColumns } from '@material-ui/data-grid';
+import { {{property}}DataSource } from "../services/data/{{name}}DataSource"
+
+export interface {{name}}ListPagePropsInterface extends RouteChildrenProps, TranslateProps, StyledComponentProps {
+
+}
+
+export interface {{name}}ListPageStateInterface {
+  data: any
+}
 
 const useStyles: any = makeStyles((theme) => ({
   button: {
@@ -23,18 +34,34 @@ const breadcrumbs = [
   }
 ];
 
-export interface {{name}}ListPagePropsInterface extends RouteChildrenProps, TranslateProps, StyledComponentProps {
-
-}
-
-export interface {{name}}ListPageStateInterface {
-
-}
+const columns: GridColumns = [
+  {{#each fields}}
+    {
+      field: '{{@key}}',
+      headerName: '{{capitalize @key}}'
+    },
+  {{/each}}
+];
 
 export class {{name}}ListPage extends React.Component<{{name}}ListPagePropsInterface, {{name}}ListPageStateInterface> {
 
+  public readonly state = {
+    data: []
+  }
+
+  componentDidMount() {
+    {{property}}DataSource.collection().then(collection => {
+      this.setState({ data: collection?.members });
+    })
+  }
+
+  processColumns(columns: GridColumns) {
+    return columns;
+  }
+
   render() {
     const { t, classes } = this.props
+    const { data } = this.state
 
     return (
       <div className="container">
@@ -46,6 +73,7 @@ export class {{name}}ListPage extends React.Component<{{name}}ListPagePropsInter
             <Button variant="contained" color="primary" href="#/{{route}}/new" className={classes?.button} startIcon={<AddCircleIcon/>}>
               {t('Create new')}
             </Button>
+            <DataGrid rows={data} columns={this.processColumns(columns)} pageSize={5} checkboxSelection />
           </div>
         </div>
       </div>

@@ -17,6 +17,21 @@ export interface ApplicationDetailsPageStateInterface {
   entity: ApplicationInterface|null
 }
 
+const breadcrumbs = [
+  {
+    title: "Home",
+    url: "#/",
+  },
+  {
+    title: "Applications",
+    url: "#/application",
+  },
+  {
+    title: "Application details",
+    url: "#/application",
+  }
+];
+
 export class ApplicationDetailsPage extends React.Component<ApplicationDetailsPagePropsInterface, ApplicationDetailsPageStateInterface> {
 
     public readonly state: ApplicationDetailsPageStateInterface = {

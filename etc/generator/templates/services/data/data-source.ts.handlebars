@@ -1,12 +1,18 @@
 import { AbstractDataSource } from "../AbstractDataSource"
-import { {{name}}Interface } from '../../models/{{name}}Interface'
+import { {{name}}CollectionInterface, {{name}}Interface } from '../../models/{{name}}Interface'
 
 const url = '{{baseUrl}}'
 
 export class {{name}}DataSource extends AbstractDataSource {
 
   public async get(id: string|number): Promise<{{name}}Interface|null> {
-    const response = await fetch(this.baseUrl + '/api/entity/user/' + id)
+    const response = await fetch(this.baseUrl + '/api/entity/{{route}}/' + id)
+
+    return await response.json()
+  }
+
+  public async collection(): Promise<{{name}}CollectionInterface|null> {
+    const response = await fetch(this.baseUrl + '/api/collection/{{route}}/')
 
     return await response.json()
   }

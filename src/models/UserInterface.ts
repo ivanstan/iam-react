@@ -1,3 +1,4 @@
+import { CollectionInterface } from './CollectionInterface'
 import { ApplicationInterface } from './ApplicationInterface'
 import { ClaimInterface } from './ClaimInterface'
 
@@ -13,4 +14,8 @@ export interface UserInterface {
     banned: boolean
     createdAt: string
     updatedAt: string
+}
+
+export interface UserCollectionInterface extends CollectionInterface {
+  members: UserInterface[]
 }

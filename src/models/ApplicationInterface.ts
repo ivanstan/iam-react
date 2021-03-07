@@ -1,3 +1,4 @@
+import { CollectionInterface } from './CollectionInterface'
 import { UserInterface } from './UserInterface'
 import { ClaimInterface } from './ClaimInterface'
 
@@ -9,4 +10,8 @@ export interface ApplicationInterface {
     name: string
     url: string
     redirect: string
+}
+
+export interface ApplicationCollectionInterface extends CollectionInterface {
+  members: ApplicationInterface[]
 }

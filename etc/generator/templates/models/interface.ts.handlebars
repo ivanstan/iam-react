@@ -1,3 +1,4 @@
+import { CollectionInterface } from './CollectionInterface'
 {{#if hasAssociations }}
 {{#each fields}}
 {{#if this.target}}
@@ -10,4 +11,8 @@ export interface {{name}}Interface {
 {{#each fields}}
     {{@key}}: {{this.typescript}}
 {{/each}}
+}
+
+export interface {{name}}CollectionInterface extends CollectionInterface {
+  members: {{name}}Interface[]
 }

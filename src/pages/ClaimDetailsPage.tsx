@@ -17,6 +17,21 @@ export interface ClaimDetailsPageStateInterface {
   entity: ClaimInterface|null
 }
 
+const breadcrumbs = [
+  {
+    title: "Home",
+    url: "#/",
+  },
+  {
+    title: "Claims",
+    url: "#/claim",
+  },
+  {
+    title: "Claim details",
+    url: "#/claim",
+  }
+];
+
 export class ClaimDetailsPage extends React.Component<ClaimDetailsPagePropsInterface, ClaimDetailsPageStateInterface> {
 
     public readonly state: ClaimDetailsPageStateInterface = {

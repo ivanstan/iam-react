@@ -17,6 +17,21 @@ export interface UserDetailsPageStateInterface {
   entity: UserInterface|null
 }
 
+const breadcrumbs = [
+  {
+    title: "Home",
+    url: "#/",
+  },
+  {
+    title: "Users",
+    url: "#/user",
+  },
+  {
+    title: "User details",
+    url: "#/user",
+  }
+];
+
 export class UserDetailsPage extends React.Component<UserDetailsPagePropsInterface, UserDetailsPageStateInterface> {
 
     public readonly state: UserDetailsPageStateInterface = {

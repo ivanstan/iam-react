@@ -50,6 +50,7 @@
     ]
   },
   "devDependencies": {
+    "@material-ui/data-grid": "^4.0.0-alpha.21",
     "@types/react-router-dom": "^5.1.7"
   }
 }
